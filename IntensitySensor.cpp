@@ -1,15 +1,11 @@
 #include <Arduino.h>
 #include "IntensitySensor.h"
 
-IntensitySensor::IntensitySensor(int s, int th)
-{
-  pin = s;
-  state = false;
-  threshold = th;
-  base = 0;
-}
+IntensitySensor::IntensitySensor(int pin, int threshold)
+    : pin(pin), threshold(threshold), state(false), base(0) {}
 
-void IntensitySensor::update() {
+void IntensitySensor::update()
+{
   int val = analogRead(pin);
   setIntensity(val);
 }
@@ -24,7 +20,8 @@ void IntensitySensor::setIntensity(int val)
   intensity = val;
 }
 
-bool IntensitySensor::isActive() {
+bool IntensitySensor::isActive()
+{
   return intensity - base > threshold;
 }
 

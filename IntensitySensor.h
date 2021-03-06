@@ -2,7 +2,7 @@
 #define HEADER_INTENSITY_SENSOR
 class IntensitySensor
 {
-protected:
+private:
   bool state;
   int pin;
   int base;
@@ -10,7 +10,7 @@ protected:
   int intensity;
 
 public:
-  IntensitySensor(int s, int th);
+  IntensitySensor(int pin, int threshold);
   void update();
   void setBase();
   void setIntensity(int val);
