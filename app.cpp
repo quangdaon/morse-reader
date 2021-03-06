@@ -15,12 +15,6 @@ LiquidCrystal lcd(2, 3, 8, 9, 10, 11);
 IntensitySensor sensor(PHOTORESISTOR, BRIGHTNESS_STATE_THRESHOLD);
 MorseReader morseReader(sensor, MORSE_COMMAND_THRESHOLD, NEW_CHARACTER_THRESHOLD, SPACE_THRESHOLD, RESET_BASE_THRESHOLD);
 
-unsigned long lastChange = 0;
-
-bool charSent = false;
-int currentSequence[5];
-int currentIndex = 0;
-
 void reset()
 {
   lcd.clear();
@@ -28,7 +22,6 @@ void reset()
   sensor.update();
   sensor.setBase();
   morseReader.reset();
-  lastChange = millis();
 }
 
 void setup()
